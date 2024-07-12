@@ -23,5 +23,5 @@ public class Book {
 
     private String category;
 
-    private String img;
+    private byte[] img;
 }
