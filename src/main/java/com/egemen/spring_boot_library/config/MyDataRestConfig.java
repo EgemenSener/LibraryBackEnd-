@@ -1,6 +1,7 @@
 package com.egemen.spring_boot_library.config;
 
 import com.egemen.spring_boot_library.entity.Book;
+import com.egemen.spring_boot_library.entity.Review;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
@@ -23,8 +24,10 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
         };
         
         config.exposeIdsFor(Book.class);
-        
+        config.exposeIdsFor(Review.class);
+
         disabledHttpMethods(Book.class, config, theUnsupportedActions);
+        disabledHttpMethods(Review.class, config, theUnsupportedActions);
 
         /* Configure Cors Mapping */
         cors.addMapping(config.getBasePath() + "/**")
