@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -53,5 +54,9 @@ public class BookService {
     public boolean isCheckedOutByUser(String userEmail, Long bookId) {
         Checkout isCheckedOut = checkoutRepository.findByUserEmailAndAndBookId(userEmail, bookId);
         return isCheckedOut != null;
+    }
+
+    public int currentLoansCount(String userEmail) {
+        return checkoutRepository.findBooksByUserEmail(userEmail).size();
     }
 }
