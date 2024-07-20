@@ -22,4 +22,10 @@ public class BookController {
         String userEmail = "testuser@email.com";
         return bookService.checkoutBook(userEmail, bookId);
     }
+
+    @GetMapping("/secure/ischeckedout/byuser")
+    public Boolean checkoutBookByUser(@RequestParam Long bookId) {
+        String userEmail = "testuser@email.com";
+        return  bookService.isCheckedOutByUser(userEmail, bookId);
+    }
 }
