@@ -1,4 +1,5 @@
 @echo off
+echo ***** BY EGEMEN SENER *****
 REM Klasor yollarını ayarlayın
 SET BASE_DIR=C:\Users\EGEMEN\CODING\Library\Deployment
 SET JAR_DIR=%BASE_DIR%\lib
@@ -38,5 +39,29 @@ IF ERRORLEVEL 1 (
     exit /b 1
 )
 
-echo Islem basariyla tamamlandi.
+REM Mevcut tarih ve saati al ve formatla
+set year=%date:~-4%
+set month=%date:~4,2%
+set day=%date:~7,2%
+set hour=%time:~0,2%
+if %hour% lss 10 set hour=0%hour:~-1%
+set minute=%time:~3,2%
+
+REM Tarih ve saat formatını ayarla
+set formattedDate=%year%%month%%day%-%hour%%minute%
+
+REM WAR dosyasını zipleyin ve war klasörüne koyun
+echo WAR dosyasi zipleniyor...
+powershell Compress-Archive -Path "%WAR_DIR%\library.war" -DestinationPath "%WAR_DIR%\%formattedDate%-library-war.zip"
+
+REM WAR dosyasını sil
+del /Q %WAR_DIR%\library.war
+
+REM Eğer herhangi bir hata olursa, script burada durur
+IF ERRORLEVEL 1 (
+    echo WAR dosyasinin ziplenmesi basarisiz oldu.
+    exit /b 1
+)
+
+echo ***** Deployment Dosyasi Hazir *****
 exit /b 1
