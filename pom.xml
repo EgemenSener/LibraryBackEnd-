@@ -11,7 +11,6 @@
 	</parent>
 	<groupId>com.egemen</groupId>
 	<artifactId>spring-boot-library</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>spring-boot-library</name>
 	<description>Spring Boot Application for React</description>
 	<properties>
@@ -99,43 +98,18 @@
 	</dependencies>
 
 	<build>
+		<finalName>library</finalName>
 		<plugins>
-			<!-- WAR Plugin Configuration -->
+			<!-- Maven WAR Plugin Configuration -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>3.3.1</version>
 				<configuration>
-					<!-- Exclude JARs from the WAR file -->
+					<!-- WAR dosyasindan JAR dosyalarini haric tutma -->
 					<packagingExcludes>WEB-INF/lib/*.jar</packagingExcludes>
 				</configuration>
 			</plugin>
-
-			<!-- Dependency Plugin Configuration -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<version>3.5.0</version>
-				<executions>
-					<!-- Copy dependencies -->
-					<execution>
-						<id>copy-dependencies</id>
-						<phase>package</phase>
-						<goals>
-							<goal>copy-dependencies</goal>
-						</goals>
-						<configuration>
-							<outputDirectory>C:/Users/EGEMEN/CODING/Library/lib</outputDirectory>
-							<overWrite>true</overWrite>
-							<includeScope>runtime</includeScope> <!-- Sadece runtime bağımlılıkları kopyala -->
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
 		</plugins>
 	</build>
-
-
-
-
 </project>
