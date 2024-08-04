@@ -27,6 +27,13 @@ mkdir %TEMP_JAR_DIR%
 
 REM lib klasöründeki dosyaları geçici klasöre taşı
 echo lib klasorundeki dosyalar temp_lib'e tasiniyor...
+
+REM lib klasörünün boş olup olmadığını kontrol et
+if not exist "%JAR_DIR%\*.jar" (
+    echo Uyari: lib klasoru bos. Lutfen lib klasorunu kontrol edin.
+    exit /b
+)
+
 move /Y %JAR_DIR%\*.jar %TEMP_JAR_DIR%
 
 REM Maven Wrapper kullanarak clean install işlemi başlat
