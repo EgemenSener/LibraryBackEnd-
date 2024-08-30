@@ -5,7 +5,6 @@ import com.egemen.spring_boot_library.responsemodels.ShelfCurrentLoansResponse;
 import com.egemen.spring_boot_library.services.BookService;
 import com.egemen.spring_boot_library.utils.ExtractJWT;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.mediatype.alps.Ext;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
