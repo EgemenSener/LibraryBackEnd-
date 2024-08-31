@@ -24,7 +24,7 @@ public class PaymentService {
 
     private final PaymentRepository paymentRepository;
     @Autowired
-    private PaymentService(PaymentRepository paymentRepository, @Value("${stripe.key.secret}") String secretKey) {
+    public PaymentService(PaymentRepository paymentRepository, @Value("${stripe.key.secret}") String secretKey) {
         this.paymentRepository = paymentRepository;
         Stripe.apiKey = secretKey;
     }
